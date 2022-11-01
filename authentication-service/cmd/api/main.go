@@ -24,12 +24,12 @@ type Config struct {
 }
 
 func main() {
-	log.Printf("Starting authentication service")
+	log.Println("Starting authentication service")
 
-	// TODO connect to DB
+	// connect to DB
 	conn := connectToDB()
 	if conn == nil {
-		log.Panic("Can not connect to Postgre 	DB")
+		log.Panic("Can't connect to Postgres!")
 	}
 
 	// set up config
@@ -49,8 +49,8 @@ func main() {
 	}
 }
 
-func openDB(dns string) (*sql.DB, error) {
-	db, err := sql.Open("pgx", dns)
+func openDB(dsn string) (*sql.DB, error) {
+	db, err := sql.Open("pgx", dsn)
 	if err != nil {
 		return nil, err
 	}
@@ -72,7 +72,7 @@ func connectToDB() *sql.DB {
 			log.Println("Postgres not yet ready ...")
 			counts++
 		} else {
-			log.Println("Connected to Postgres !")
+			log.Println("Connected to Postgres!")
 			return connection
 		}
 
