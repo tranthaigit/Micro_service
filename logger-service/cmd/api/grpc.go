@@ -16,6 +16,7 @@ type LogServer struct {
 	Models data.Models
 }
 
+// WriteLog is method of LogServiceServer GRPC
 func (l *LogServer) WriteLog(ctx context.Context, req *logs.LogRequest) (*logs.LogResponse, error) {
 	input := req.GetLogEntry()
 
