@@ -4,8 +4,27 @@ version: '3'
 # have to change the image: <name> part to whatever your image names are
 
 services:
+
+  caddy:
+    image: tranhoangthaiit1998/micro-caddy:1.0.0
+    deploy:
+      mode: replicated
+      replicas: 1
+    ports:
+      - "80:80"
+      - "443:433"
+    volumns:
+      - caddy_data:/data
+      - caddy_config:/config
+
+  front-end:
+    image: tranhoangthaiit1998/front-end:1.0.0
+    deploy:
+      mode: replicated
+      replicas: 1
+
   broker-service:
-    image: tranhoangthaiit1998/broker-service:1.0.0
+    image: tranhoangthaiit1998/broker-service:1.0.1
     ports:
       - "8080:80"
     deploy:
@@ -27,7 +46,7 @@ services:
       DSN: "host=postgres port=5432 user=postgres password=password dbname=users sslmode=disable timezone=UTC connect_timeout=5"
 
   logger-service:
-    image: tranhoangthaiit1998/logger-service:1.0.0
+    image: tranhoangthaiit1998/logger-service:1.0.1
     deploy:
       mode: replicated
       replicas: 1
@@ -85,4 +104,10 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: users
     volumes:
-      - ./db-data/postgres/:/var/lib/postgresql/data/
+      - ./db-data/postgres/:/var/lib/postgresql/data/  
+
+volumns:
+  caddy_data:
+    external: true
+  caddy_config:
+  
