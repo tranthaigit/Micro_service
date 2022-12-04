@@ -67,7 +67,7 @@
             headers: headers,
         }
 
-        fetch(BrokerURL + "/handle", body)
+        fetch(brokerURL + "/handle", body)
         .then((response) => response.json())
         .then((data) => {
             sent.innerHTML = JSON.stringify(payload, undefined, 4);
@@ -101,7 +101,7 @@
             headers: headers,
         }
 
-        fetch(BrokerURL + "/log-grpc", body)
+        fetch(brokerURL + "/log-grpc", body)
         .then((response) => response.json())
         .then((data) => {
             sent.innerHTML = JSON.stringify(payload, undefined, 4);
@@ -135,7 +135,7 @@
             headers: headers,
         }
 
-        fetch(BrokerURL + "/handle"}}, body)
+        fetch(brokerURL + "/handle", body)
         .then((response) => response.json())
         .then((data) => {
             sent.innerHTML = JSON.stringify(payload, undefined, 4);
@@ -170,7 +170,7 @@
             headers: headers,
         }
 
-        fetch(BrokerURL + "/handle", body)
+        fetch(brokerURL + "/handle", body)
         .then((response) => response.json())
         .then((data) => {
             sent.innerHTML = JSON.stringify(payload, undefined, 4);
@@ -192,7 +192,7 @@
             method: 'POST',
         }
 
-        fetch(BrokerURL, body)
+        fetch(brokerURL , body)
         .then((response) => response.json())
         .then((data) => {
             sent.innerHTML ="empty post request";
